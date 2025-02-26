@@ -1,0 +1,43 @@
+<section>
+  <div class="container">
+    <div class="contacts">
+      <div class="contacts-info" appFade="left">
+        <h2>{{ contactInfo.title }}</h2>
+        <p>{{ contactInfo.description }}</p>
+        <ul>
+          <li *ngFor="let contact of contactInfo.contacts">
+            <span class="contacts-info-icon">
+              <i class="fa-solid" [ngClass]="contact.icon"></i>
+            </span>
+            <span class="contacts-info-icon-desc">
+              <a *ngIf="contact.link" [href]="contact.link">{{ contact.text }}</a>
+              <span *ngIf="!contact.link">{{ contact.text }}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contacts-form" appFade="left" [delay]="200">
+        <h3>Say Something</h3>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <input class="contacts-form-row" type="text" placeholder="Enter your name" formControlName="name">
+          @if (isFieldValid('name')){
+          <span class="contacts-error-label">Name is required</span>
+          }
+          <input class="contacts-form-row" type="email" placeholder="Enter your email" formControlName="email">
+          @if (isFieldValid('email')){
+          <span class="contacts-error-label">Email is invalid</span>
+          }
+          <textarea class="contacts-form-row" rows="4" placeholder="Enter your message"
+            formControlName="message"></textarea>
+          @if (isFieldValid('message')){
+          <span class="contacts-error-label">Message is required</span>
+          }
+          <div>
+            <button type="submit" class="btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

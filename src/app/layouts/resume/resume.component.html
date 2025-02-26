@@ -1,0 +1,54 @@
+<section>
+  <div class="container">
+    <h2>Experience</h2>
+
+    <div class="experience">
+      <div class="experience-card" appFade="up" *ngFor="let exp of experiences" [delay]="exp.delay">
+        <div class="experience-card-info">
+          <h3 class="experience-card-info-title">{{ exp.title }}</h3>
+          <span class="experience-card-info-date">{{ exp.company }} | {{ exp.location }}</span>
+          <span class="experience-card-info-date">{{ exp.period }}</span>
+          <div>
+            <span class="experience-card-info-badge">{{ exp.employmentType }}</span>
+          </div>
+        </div>
+        <div class="experience-card-details">
+          <h3 class="experience-card-details-title">{{ exp.company }} Inc</h3>
+          <p>{{ exp.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Education & Skills</h2>
+    <div class="education-skill">
+      <!-- Education Section -->
+      <div class="education" appFade="up">
+        <div class="education-card" *ngFor="let edu of educationList">
+          <span class="education-date">{{ edu.date }}</span>
+          <h3 class="education-title">{{ edu.title }}</h3>
+          <span class="education-institute">{{ edu.institute }}</span>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="skill" appFade="up" [delay]="200">
+        <div class="skill-container">
+          <div class="skill-card" *ngFor="let skill of skills">
+            <h3 class="skill-count">{{ skill.percentage }}%</h3>
+            <div class="skill-info">
+              <h4 class="skill-title">{{ skill.title }}</h4>
+              <div class="skill-progress">
+                <div class="skill-progress-inner" [ngStyle]="setSkillProgress(skill.percentage)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</section>
